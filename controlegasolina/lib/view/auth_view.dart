@@ -54,12 +54,14 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _login,
-                style: ElevatedButton.styleFrom(backgroundColor: Color(0xFF4A148C)),
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFF4A148C)),
                 child: Text('Login', style: TextStyle(color: Colors.white)),
               ),
               TextButton(
                 onPressed: () => Navigator.pushNamed(context, '/register'),
-                child: Text('Não tem uma conta? Registre-se aqui!', style: TextStyle(color: Colors.white)),
+                child: Text('Não tem uma conta? Registre-se aqui!',
+                    style: TextStyle(color: Colors.white)),
               ),
             ],
           ),
@@ -68,7 +70,8 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildTextField(TextEditingController controller, String label, {bool obscureText = false}) {
+  Widget _buildTextField(TextEditingController controller, String label,
+      {bool obscureText = false}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: TextField(
