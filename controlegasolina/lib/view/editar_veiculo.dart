@@ -57,7 +57,7 @@ class _EditarVeiculoScreenState extends State<EditarVeiculoScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Editar Veículo'),
-        backgroundColor: Color(0xFF4A148C),
+        backgroundColor: Color.fromARGB(255, 255, 0, 0),
         foregroundColor: Colors.white,
       ),
       body: Container(
@@ -82,7 +82,7 @@ class _EditarVeiculoScreenState extends State<EditarVeiculoScreen> {
               ElevatedButton(
                 onPressed: _editarVeiculo,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF4A148C),
+                  backgroundColor: Color.fromARGB(255, 255, 0, 0),
                 ),
                 child: Text('Salvar', style: TextStyle(color: Colors.white)),
               ),

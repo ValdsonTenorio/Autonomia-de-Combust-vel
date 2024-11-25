@@ -45,7 +45,7 @@ class _PerfilScreenState extends State<PerfilScreen> {
       appBar: AppBar(
         title: Text('Perfil'),
         foregroundColor: Colors.white,
-        backgroundColor: Color(0xFF4A148C),
+        backgroundColor: Color.fromARGB(255, 140, 20, 20),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -58,7 +58,7 @@ class _PerfilScreenState extends State<PerfilScreen> {
             ElevatedButton(
               onPressed: _updateUserProfile,
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF4A148C),
+                backgroundColor: Color.fromARGB(255, 255, 0, 0),
               ),
               child: Text('Atualizar Perfil'),
             ),
@@ -78,13 +78,13 @@ class _PerfilScreenState extends State<PerfilScreen> {
           labelText: label,
           labelStyle: TextStyle(color: Colors.white),
           filled: true,
-          fillColor: Color(0xFF4A148C).withOpacity(0.2),
+          fillColor: Color.fromARGB(255, 255, 0, 0).withOpacity(0.2),
           border: OutlineInputBorder(),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.white),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Color(0xFF4A148C)),
+            borderSide: BorderSide(color: Color.fromARGB(255, 255, 0, 0)),
           ),
         ),
         style: TextStyle(color: Colors.white),

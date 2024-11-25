@@ -31,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Login'),
-        backgroundColor: Color(0xFF4A148C),
+        backgroundColor: Color.fromARGB(255, 255, 0, 0),
         foregroundColor: Colors.white,
       ),
       body: Container(
@@ -55,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ElevatedButton(
                 onPressed: _login,
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF4A148C)),
+                    backgroundColor: Color.fromARGB(255, 255, 0, 0)),
                 child: Text('Login', style: TextStyle(color: Colors.white)),
               ),
               TextButton(
@@ -80,13 +80,13 @@ class _LoginScreenState extends State<LoginScreen> {
           labelText: label,
           labelStyle: TextStyle(color: Colors.white),
           filled: true,
-          fillColor: Color(0xFF4A148C).withOpacity(0.2),
+          fillColor: Color.fromARGB(255, 255, 0, 0).withOpacity(0.2),
           border: OutlineInputBorder(),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.white),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Color(0xFF4A148C)),
+            borderSide: BorderSide(color: Color.fromARGB(255, 255, 0, 0)),
           ),
         ),
         style: TextStyle(color: Colors.white),

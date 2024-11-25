@@ -16,7 +16,7 @@ class MeusVeiculosScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Meus Veículos'),
-        backgroundColor: Color(0xFF4A148C),
+        backgroundColor: Color.fromARGB(255, 255, 0, 0),
         foregroundColor: Colors.white,
       ),
       body: Container(
@@ -34,7 +34,7 @@ class MeusVeiculosScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 var veiculo = snapshot.data!.docs[index];
                 return Card(
-                  color: Color(0xFF4A148C).withOpacity(0.2),
+                  color: Color.fromARGB(255, 255, 0, 0).withOpacity(0.2),
                   child: ListTile(
                     title: Text(
                       veiculo['nome'],

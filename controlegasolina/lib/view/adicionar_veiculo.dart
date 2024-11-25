@@ -42,7 +42,7 @@ class _AdicionarVeiculoScreenState extends State<AdicionarVeiculoScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Adicionar Veículo'),
-        backgroundColor: Color(0xFF4A148C),
+        backgroundColor: Color.fromARGB(255, 255, 0, 0),
         foregroundColor: Colors.white,
       ),
       body: Container(
@@ -67,7 +67,7 @@ class _AdicionarVeiculoScreenState extends State<AdicionarVeiculoScreen> {
               ElevatedButton(
                 onPressed: _adicionarVeiculo,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF4A148C),
+                  backgroundColor: Color.fromARGB(255, 255, 0, 0),
                 ),
                 child: Text('Adicionar', style: TextStyle(color: Colors.white)),
               ),
@@ -87,13 +87,13 @@ class _AdicionarVeiculoScreenState extends State<AdicionarVeiculoScreen> {
           labelText: label,
           labelStyle: TextStyle(color: Colors.white),
           filled: true,
-          fillColor: Color(0xFF4A148C).withOpacity(0.2),
+          fillColor: Color.fromARGB(255, 255, 0, 0).withOpacity(0.2),
           border: OutlineInputBorder(),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.white),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Color(0xFF4A148C)),
+            borderSide: BorderSide(color: Color.fromARGB(255, 255, 0, 0)),
           ),
         ),
         style: TextStyle(color: Colors.white),

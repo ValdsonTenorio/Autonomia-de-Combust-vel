@@ -16,7 +16,7 @@ class HistoricoAbastecimentosScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Histórico de Abastecimentos'),
-        backgroundColor: Color(0xFF4A148C),
+        backgroundColor: Color.fromARGB(255, 255, 0, 0),
         foregroundColor: Colors.white,
       ),
       body: Container(
@@ -86,7 +86,7 @@ class HistoricoAbastecimentosScreen extends StatelessWidget {
                     return Column(
                       children: [
                         Container(
-                          color: Color(0xFF4A148C).withOpacity(0.5),
+                          color: Color.fromARGB(255, 255, 0, 0).withOpacity(0.5),
                           child: ExpansionTile(
                             title: Text(veiculoNome,
                                 style: TextStyle(color: Colors.white)),
@@ -94,7 +94,7 @@ class HistoricoAbastecimentosScreen extends StatelessWidget {
                               var abastecimentoData = abastecimentoDoc.data()
                                   as Map<String, dynamic>;
                               return Card(
-                                color: Color(0xFF4A148C).withOpacity(0.2),
+                                color: Color.fromARGB(255, 255, 0, 0).withOpacity(0.2),
                                 child: ListTile(
                                   title: Text(
                                     'Data: ${abastecimentoData['data'].toDate()}',
@@ -144,7 +144,7 @@ class HistoricoAbastecimentosScreen extends StatelessWidget {
                         Container(
                           padding: EdgeInsets.all(8.0),
                           margin: EdgeInsets.symmetric(vertical: 2.0),
-                          color: Color(0xFF4A148C).withOpacity(0.4),
+                          color: Color.fromARGB(255, 255, 0, 0).withOpacity(0.4),
                           child: Text(
                             'Média de km/l: ${mediaKmPorLitro.toStringAsFixed(2)}',
                             style: TextStyle(color: Colors.white),

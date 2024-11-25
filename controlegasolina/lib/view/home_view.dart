@@ -18,8 +18,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
-        backgroundColor: Color(0xFF4A148C),
+        title: Text('Início'),
+        backgroundColor: Colors.redAccent,
         foregroundColor: Colors.white,
         actions: [
           IconButton(
@@ -38,10 +38,10 @@ class _HomeScreenState extends State<HomeScreen> {
           stream: _homeController.getVeiculos(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: CircularProgressIndicator());
+              return Center(child: CircularProgressIndicator(color: Colors.redAccent));
             }
             if (snapshot.hasError) {
-              return Center(child: Text('Erro: ${snapshot.error}', style: TextStyle(color: Colors.white)));
+              return Center(child: Text('Erro: ${snapshot.error}', style: TextStyle(color: Colors.redAccent)));
             }
             if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
               return Center(child: Text('Nenhum veículo encontrado', style: TextStyle(color: Colors.white)));
@@ -52,10 +52,10 @@ class _HomeScreenState extends State<HomeScreen> {
               stream: _homeController.getAbastecimentos(veiculos),
               builder: (context, abastecimentoSnapshot) {
                 if (abastecimentoSnapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator());
+                  return Center(child: CircularProgressIndicator(color: Colors.redAccent));
                 }
                 if (abastecimentoSnapshot.hasError) {
-                  return Center(child: Text('Erro: ${abastecimentoSnapshot.error}', style: TextStyle(color: Colors.white)));
+                  return Center(child: Text('Erro: ${abastecimentoSnapshot.error}', style: TextStyle(color: Colors.redAccent)));
                 }
 
                 int recentRefuels = 0;
@@ -66,7 +66,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 return Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
@@ -75,39 +74,49 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       SizedBox(height: 20),
                       if (user != null)
-                        Column(
-                          children: [
-                            Card(
-                              color: Color(0xFF4A148C).withOpacity(0.2),
-                              elevation: 4,
-                              margin: EdgeInsets.symmetric(vertical: 10),
-                              child: ListTile(
-                                leading: Icon(Icons.person, color: Colors.white),
-                                title: Text('Usuário logado', style: TextStyle(color: Colors.white)),
-                                subtitle: Text(user!.email ?? '', style: TextStyle(color: Colors.white70)),
-                              ),
+                        Card(
+                          color: Colors.red.withOpacity(0.2),
+                          elevation: 4,
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Expanded(
+                                  flex: 2,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Usuário Atual', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
+                                      Text(user!.email ?? '', style: TextStyle(color: Colors.white70)),
+                                    ],
+                                  ),
+                                ),
+                                VerticalDivider(color: Colors.white70),
+                                Expanded(
+                                  flex: 1,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Total de Veículos', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
+                                      Text('${veiculos.length}', style: TextStyle(color: Colors.white70)),
+                                    ],
+                                  ),
+                                ),
+                                VerticalDivider(color: Colors.white70),
+                                Expanded(
+                                  flex: 1,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Abastecimentos Recentes', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
+                                      Text('$recentRefuels', style: TextStyle(color: Colors.white70)),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
-                            Card(
-                              color: Color(0xFF4A148C).withOpacity(0.2),
-                              elevation: 4,
-                              margin: EdgeInsets.symmetric(vertical: 10),
-                              child: ListTile(
-                                leading: Icon(Icons.car_rental, color: Colors.white),
-                                title: Text('Total de Veículos', style: TextStyle(color: Colors.white)),
-                                subtitle: Text('${veiculos.length}', style: TextStyle(color: Colors.white70)),
-                              ),
-                            ),
-                            Card(
-                              color: Color(0xFF4A148C).withOpacity(0.2),
-                              elevation: 4,
-                              margin: EdgeInsets.symmetric(vertical: 10),
-                              child: ListTile(
-                                leading: Icon(Icons.local_gas_station, color: Colors.white),
-                                title: Text('Abastecimentos Recentes', style: TextStyle(color: Colors.white)),
-                                subtitle: Text('$recentRefuels', style: TextStyle(color: Colors.white70)),
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
                     ],
                   ),
