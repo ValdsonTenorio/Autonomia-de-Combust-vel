@@ -36,7 +36,7 @@ class _PerfilScreenState extends State<PerfilScreen> {
     if (_senhaController.text.isNotEmpty) {
       await _perfilController.updatePassword(_senhaController.text);
     }
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Perfil atualizado com sucesso')));
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Perfil atualizado')));
   }
 
   @override
@@ -51,7 +51,7 @@ class _PerfilScreenState extends State<PerfilScreen> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            _buildTextField(_nicknameController, 'Nickname'),
+            _buildTextField(_nicknameController, 'Nome'),
             _buildTextField(_emailController, 'Email'),
             _buildTextField(_senhaController, 'Senha', obscureText: true),
             SizedBox(height: 20),

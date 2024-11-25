@@ -31,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Login'),
-        backgroundColor: Color.fromARGB(255, 255, 0, 0),
+        backgroundColor: Colors.redAccent,
         foregroundColor: Colors.white,
       ),
       body: Container(
@@ -48,20 +48,22 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: Text(
                     _errorMessage,
-                    style: TextStyle(color: Colors.red),
+                    style: TextStyle(color: Colors.redAccent),
                   ),
                 ),
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _login,
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: Color.fromARGB(255, 255, 0, 0)),
+                    backgroundColor: Colors.redAccent),
                 child: Text('Login', style: TextStyle(color: Colors.white)),
               ),
-              TextButton(
+              SizedBox(height: 10),
+              ElevatedButton(
                 onPressed: () => Navigator.pushNamed(context, '/register'),
-                child: Text('Não tem uma conta? Registre-se aqui!',
-                    style: TextStyle(color: Colors.white)),
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.redAccent),
+                child: Text('Registrar', style: TextStyle(color: Colors.white)),
               ),
             ],
           ),
@@ -80,13 +82,13 @@ class _LoginScreenState extends State<LoginScreen> {
           labelText: label,
           labelStyle: TextStyle(color: Colors.white),
           filled: true,
-          fillColor: Color.fromARGB(255, 255, 0, 0).withOpacity(0.2),
+          fillColor: Colors.redAccent.withOpacity(0.2),
           border: OutlineInputBorder(),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.white),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Color.fromARGB(255, 255, 0, 0)),
+            borderSide: BorderSide(color: Colors.redAccent),
           ),
         ),
         style: TextStyle(color: Colors.white),

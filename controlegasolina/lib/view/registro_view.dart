@@ -33,7 +33,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Registrar'),
-        backgroundColor: Color.fromARGB(255, 255, 0, 0),
+        backgroundColor: Colors.redAccent,
         foregroundColor: Colors.white,
       ),
       body: Container(
@@ -43,7 +43,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _buildTextField(_nicknameController, 'Nickname'),
+              _buildTextField(_nicknameController, 'Nome'),
               _buildTextField(_emailController, 'Email'),
               _buildTextField(_passwordController, 'Senha', obscureText: true),
               if (_errorMessage.isNotEmpty)
@@ -51,18 +51,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: Text(
                     _errorMessage,
-                    style: TextStyle(color: Colors.red),
+                    style: TextStyle(color: Colors.redAccent),
                   ),
                 ),
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _register,
-                style: ElevatedButton.styleFrom(backgroundColor: Color.fromARGB(255, 255, 0, 0)),
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.redAccent),
                 child: Text('Registrar', style: TextStyle(color: Colors.white)),
               ),
-              TextButton(
+              SizedBox(height: 10),
+              ElevatedButton(
                 onPressed: () => Navigator.pushNamed(context, '/'),
-                child: Text('Já tem uma conta? Login', style: TextStyle(color: Colors.white)),
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.redAccent),
+                child: Text('Login', style: TextStyle(color: Colors.white)),
               ),
             ],
           ),
@@ -80,13 +82,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
           labelText: label,
           labelStyle: TextStyle(color: Colors.white),
           filled: true,
-          fillColor: Color.fromARGB(255, 255, 0, 0).withOpacity(0.2),
+          fillColor: Colors.redAccent.withOpacity(0.2),
           border: OutlineInputBorder(),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.white),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Color.fromARGB(255, 255, 0, 0)),
+            borderSide: BorderSide(color: Colors.redAccent),
           ),
         ),
         style: TextStyle(color: Colors.white),
