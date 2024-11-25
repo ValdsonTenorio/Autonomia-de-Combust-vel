@@ -10,64 +10,60 @@ class MyDrawer extends StatelessWidget {
     User? user = _authController.getCurrentUser();
 
     return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          UserAccountsDrawerHeader(
-            accountName: Text(user?.displayName ?? 'Nome do Usuário', style: TextStyle(color: Colors.white)),
-            accountEmail: Text(user?.email ?? 'email@exemplo.com', style: TextStyle(color: Colors.white)),
-            decoration: BoxDecoration(
-              color: Color.fromARGB(255, 255, 0, 0),
+      child: Container(
+        color: Color(0xFF2E2E2E),
+        child: Column(
+          children: [
+            Container(
+              color: Colors.red,
+              padding: EdgeInsets.symmetric(vertical: 50, horizontal: 20),
+              width: double.infinity,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CircleAvatar(
+                    backgroundColor: Colors.white,
+                    radius: 40,
+                    child: Text(
+                      user?.displayName?.substring(0, 1) ?? 'U',
+                      style: TextStyle(fontSize: 40, color: Colors.red),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Text(user?.displayName ?? 'Nome do Usuário', style: TextStyle(color: Colors.white, fontSize: 20)),
+                  Text(user?.email ?? 'email@exemplo.com', style: TextStyle(color: Colors.white70, fontSize: 14)),
+                ],
+              ),
             ),
-          ),
-          ListTile(
-            leading: Icon(Icons.home),
-            iconColor: Color.fromARGB(255, 255, 0, 0),
-            title: Text('Home'),
-            textColor: Colors.white,
-            onTap: () => Navigator.pushNamed(context, '/home'),
-          ),
-          ListTile(
-            leading: Icon(Icons.car_rental),
-            iconColor: Color.fromARGB(255, 255, 0, 0),
-            title: Text('Meus Veículos'),
-            textColor: Colors.white,
-            onTap: () => Navigator.pushNamed(context, '/meus_veiculos'),
-          ),
-          ListTile(
-            leading: Icon(Icons.add),
-            iconColor: Color.fromARGB(255, 255, 0, 0),
-            title: Text('Adicionar Veículo'),
-            textColor: Colors.white,
-            onTap: () => Navigator.pushNamed(context, '/adicionar_veiculo'),
-          ),
-          ListTile(
-            leading: Icon(Icons.history),
-            iconColor: Color.fromARGB(255, 255, 0, 0),
-            title: Text('Histórico de Abastecimentos'),
-            textColor: Colors.white,
-            onTap: () => Navigator.pushNamed(context, '/historico_abastecimentos'),
-          ),
-          ListTile(
-            leading: Icon(Icons.person),
-            iconColor: Color.fromARGB(255, 255, 0, 0),
-            title: Text('Perfil'),
-            textColor: Colors.white,
-            onTap: () => Navigator.pushNamed(context, '/perfil'),
-          ),
-          ListTile(
-            leading: Icon(Icons.logout),
-            iconColor: Color.fromARGB(255, 209, 8, 8),
-            title: Text('Logout'),
-            textColor: Colors.white,
-            onTap: () async {
-              await _authController.logout();
-              Navigator.pushReplacementNamed(context, '/');
-            },
-          ),
-        ],
+            Expanded(
+              child: ListView(
+                padding: EdgeInsets.only(top: 20),
+                children: [
+                  _buildDrawerItem(context, 'Home', Icons.home, '/home'),
+                  _buildDrawerItem(context, 'Meus Veículos', Icons.car_rental, '/meus_veiculos'),
+                  _buildDrawerItem(context, 'Adicionar Veículo', Icons.add, '/adicionar_veiculo'),
+                  _buildDrawerItem(context, 'Histórico de Abastecimentos', Icons.history, '/historico_abastecimentos'),
+                  _buildDrawerItem(context, 'Perfil', Icons.person, '/perfil'),
+                  _buildDrawerItem(context, 'Logout', Icons.logout, '/', isLogout: true),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
-      backgroundColor: Color(0xFF2E2E2E),
+    );
+  }
+
+  Widget _buildDrawerItem(BuildContext context, String title, IconData icon, String route, {bool isLogout = false}) {
+    return ListTile(
+      leading: Icon(icon, color: Colors.red),
+      title: Text(title, style: TextStyle(color: Colors.white, fontSize: 16)),
+      onTap: () async {
+        if (isLogout) {
+          await _authController.logout();
+        }
+        Navigator.pushReplacementNamed(context, route);
+      },
     );
   }
 }

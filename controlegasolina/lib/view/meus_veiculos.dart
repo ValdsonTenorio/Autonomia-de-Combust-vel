@@ -16,7 +16,7 @@ class MeusVeiculosScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Meus Veículos'),
-        backgroundColor: Color.fromARGB(255, 255, 0, 0),
+        backgroundColor: Colors.redAccent,
         foregroundColor: Colors.white,
       ),
       body: Container(
@@ -27,14 +27,14 @@ class MeusVeiculosScreen extends StatelessWidget {
               .where('userId', isEqualTo: userId)
               .snapshots(),
           builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-            if (!snapshot.hasData) return CircularProgressIndicator();
+            if (!snapshot.hasData) return Center(child: CircularProgressIndicator());
 
             return ListView.builder(
               itemCount: snapshot.data!.docs.length,
               itemBuilder: (context, index) {
                 var veiculo = snapshot.data!.docs[index];
                 return Card(
-                  color: Color.fromARGB(255, 255, 0, 0).withOpacity(0.2),
+                  color: Colors.red.withOpacity(0.2),
                   child: ListTile(
                     title: Text(
                       veiculo['nome'],
@@ -44,41 +44,55 @@ class MeusVeiculosScreen extends StatelessWidget {
                       '${veiculo['modelo']} - ${veiculo['ano']}',
                       style: TextStyle(color: Colors.white70),
                     ),
-                    trailing: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        IconButton(
-                          icon: Icon(Icons.local_gas_station, color: Colors.white),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => NovoAbastecimentoScreen(veiculoId: veiculo.id),
-                              ),
-                            );
-                          },
-                        ),
-                        IconButton(
-                          icon: Icon(Icons.edit, color: Colors.white),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => EditarVeiculoScreen(
-                                  veiculoId: veiculo.id,
-                                  existingData: veiculo.data() as Map<String, dynamic>,
+                    trailing: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => NovoAbastecimentoScreen(veiculoId: veiculo.id),
                                 ),
-                              ),
-                            );
-                          },
-                        ),
-                        IconButton(
-                          icon: Icon(Icons.delete, color: Colors.white),
-                          onPressed: () async {
-                            await _veiculoController.deletarVeiculo(veiculo.id);
-                          },
-                        ),
-                      ],
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              foregroundColor: Colors.white, backgroundColor: Colors.redAccent,
+                            ),
+                            child: Text('Abastecer'),
+                          ),
+                          SizedBox(width: 8),
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => EditarVeiculoScreen(
+                                    veiculoId: veiculo.id,
+                                    existingData: veiculo.data() as Map<String, dynamic>,
+                                  ),
+                                ),
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              foregroundColor: Colors.white, backgroundColor: Colors.redAccent,
+                            ),
+                            child: Text('Editar'),
+                          ),
+                          SizedBox(width: 8),
+                          ElevatedButton(
+                            onPressed: () async {
+                              await _veiculoController.deletarVeiculo(veiculo.id);
+                            },
+                            style: ElevatedButton.styleFrom(
+                              foregroundColor: Colors.white, backgroundColor: Colors.redAccent,
+                            ),
+                            child: Text('Excluir'),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 );
