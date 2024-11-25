@@ -1,3 +1,4 @@
+import 'package:controlegasolina/firebase_options.dart';
 import 'package:controlegasolina/view/adicionar_veiculo.dart';
 import 'package:controlegasolina/view/auth_view.dart';
 import 'package:controlegasolina/view/historico_abastecimento.dart';
